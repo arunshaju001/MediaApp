@@ -1,0 +1,53 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link rel="stylesheet" type="text/css" href="/css/styles.css" />
+        <link rel="stylesheet" href="/css/bootstrap.min.css"/>
+        <link rel="stylesheet" href="bootstrap-3.3.7-dist/css/bootstrap.min.css"/>
+        <script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
+        <script src="/js/bootstrap.min.js"></script>
+        
+
+        <title>Sports</title>
+    </head>
+    <body style="background-color: #0A3A64;">
+
+        <!-- Header Navs -->
+        <header>
+            <%- include('./partials/header'); %>
+        </header>
+        <br>
+        <center><h2 style="color: whitesmoke;" >Latest Sports News</h2></center>
+        <br>
+
+
+        <div class="container">
+            <div class="row">
+                <% for(var i=0; i<10; i++) {%>
+                    <div class="col-4">
+                        <div class="card" style="width: 18rem;">
+                            <br>
+                            <center>
+                            <img src="<%=sports.articles[i].urlToImage%>" class="card-img-top" alt="Image Not Available" style="width:250px;"/>
+                            </center>
+                            <div class="card-body">
+                            <h5 class="card-title"><%=sports.articles[i].title%></h5>
+                            <p class="card-text"><%=sports.articles[i].description%></p>
+                            <a href="<%=sports.articles[i].url%>" class="btn btn-primary">Go to News</a>
+                            </div>
+                        </div>
+                    </div>
+                <% } %>
+            </div>
+        </div>
+
+
+        <!-- Footer -->
+        <footer>
+            <%- include('./partials/footer'); %>
+        </footer>
+
+</body>
+</html>

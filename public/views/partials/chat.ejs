@@ -1,0 +1,72 @@
+<script src="/socket.io/socket.io.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+<script>
+    var socket = io.connect();
+
+    socket.on('chat', function (data) {
+        var msg = data.user+': '+data.msg.message;
+        $('textarea').val($('textarea').val()+msg+'\n'); 
+    });
+
+    socket.on('userlist', (data)=>{
+        $('#activeuser').empty()
+        data.map((item)=>{
+            $('#activeuser').append(`UserId: <strong>${item}<strong><br/>`);
+        })
+        let total = data.length;
+        document.getElementById('listu').innerHTML= total
+        $('b').val(total);
+    })
+
+    // Handle UI
+    $(function() {
+        // Set nickname
+        var nicksts=0;
+        $('#nick').on('click', function() {
+            if(!$.trim($('#nickText').val()).length) { // zero-length string AFTER a trim
+                    alert("Name cannot be Empty")
+                }
+                else{
+                    alert("Your name is registered, You can send messages now")
+                    socket.emit('nick', $('#nickText').val());
+                    nicksts=1;
+                }
+            
+        });
+        // Send chat message
+        $('#chat').on('click', function() {
+            // var nickval = $('#nickText').val();
+            if(nicksts==0){
+                
+                alert("Set Your Name")
+            }else{
+                if(!$.trim($('#chatText').val()).length) { // zero-length string AFTER a trim
+                    alert("Enter Message")
+                }else{
+                    socket.emit('chat', {
+                    message:$('#chatText').val()
+                    });
+                    $('#chatText').val('')
+                }
+                
+            }
+            
+        });
+    });
+
+    // console.log(uiusers)
+</script>
+<div >
+    <div >
+        <h2 style=" color: white;">General Discussions</h2>
+        <input id="nickText" type="text" style="background-color: whitesmoke;color: rgb(48, 35, 10);"/>
+        <button id="nick">Set Your Name</button>
+    
+    <textarea style="height:240px;width:300px;background-color: darkslategrey;color: floralwhite;"  readonly></textarea>
+    
+        <input id="chatText" type="text" style="background-color: whitesmoke;color: black;"/>
+        <button id="chat">Send Message</button>
+    
+       
+    </div>
+</div>

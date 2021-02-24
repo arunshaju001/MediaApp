@@ -1,0 +1,65 @@
+html, body {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+body{
+    width:100%;
+    overflow-x:hidden;
+    overflow-y:hidden;
+}
+
+.carousel {
+  width:740px;
+  height:300px;
+}
+.carousel-inner {
+  width:740px;
+  height:300px;
+}
+#news{
+  background: linear-gradient(to right, #800000 4%, #000000 88%);
+}
+#popup {
+  background-color: #4CAF50; /* Green */
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  border-radius: 8px;
+  border-color: green;
+  transition-duration: 0.4s;
+  position: sticky
+}
+#popup:hover {
+  background-color: white; /* Green */
+  color: green;
+}
+#generalchat{
+  /* width: 350px; */
+  border-style: solid;
+  border-width: 2px;
+  border-color: rgb(168, 255, 168);
+  border-radius: 8px;
+  padding: 10px;
+  background-color: #35362E;
+  z-index: 1;
+  position: absolute;
+  display: flex;
+  right: 0px;
+}
+
+#footer { 
+  clear: both;
+  position: fixed; 
+  bottom: 0;
+  width:100%;
+  height:30px;
+  background-color: #35362E;
+  color:white;
+  bottom: 0px;
+}
+.map{
+  border-radius: 2px;
+}
